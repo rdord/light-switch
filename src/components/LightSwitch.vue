@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="button center">
+    <div class="button center" @click="toggle">
       <input id="checkbox" type="checkbox" />
       <div class="button-center center">
         <i class="far fa-lightbulb" aria-hidden="true"></i>
@@ -10,8 +10,28 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex';
+const { mapActions } = createNamespacedHelpers('idea');
+
 export default {
-  name: 'LightSwitch'
+  name: 'LightSwitch',
+  data() {
+    return {
+      on: false
+    };
+  },
+  methods: {
+    ...mapActions(['pickIdea', 'clearIdea']),
+    toggle() {
+      this.on = !this.on;
+
+      if (this.on) {
+        this.pickIdea();
+      } else {
+        this.clearIdea();
+      }
+    }
+  }
 };
 </script>
 

@@ -8,19 +8,15 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
-const { mapState, mapGetters } = createNamespacedHelpers('idea');
+const { mapState } = createNamespacedHelpers('idea');
 
 export default {
   name: 'IdeaItem',
   computed: {
     ...mapState({
+      idea: state => state.randomIdea,
       ideas: state => state.items
     }),
-    ...mapGetters(['count', 'ideaArray']),
-    idea() {
-      const index = Math.floor(Math.random() * Math.floor(this.count));
-      return this.ideaArray[index];
-    },
     dependencies() {
       const dependentIdeas = this.idea.dependencies.map(id => this.ideas[id].name);
       console.log('dependentIdeas', dependentIdeas);

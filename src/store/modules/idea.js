@@ -1,4 +1,5 @@
 const state = {
+  randomIdea: {},
   items: {
     1: {
       id: 1,
@@ -43,9 +44,20 @@ const getters = {
   ideaArray: state => Object.values(state.items)
 };
 
-const actions = {};
+const actions = {
+  pickIdea: ({ commit, getters }) => {
+    const index = Math.floor(Math.random() * Math.floor(getters.count));
+    const idea = getters.ideaArray[index];
+    commit('setRandomIdea', idea);
+  },
+  clearIdea: ({ commit }) => {
+    commit('setRandomIdea', {});
+  }
+};
 
-const mutations = {};
+const mutations = {
+  setRandomIdea: (state, idea) => (state.randomIdea = idea)
+};
 
 export default {
   namespaced: true,
