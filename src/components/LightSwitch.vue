@@ -1,0 +1,81 @@
+<template>
+  <div>
+    <div class="button center">
+      <input id="checkbox" type="checkbox" />
+      <div class="button-center center">
+        <i class="far fa-lightbulb" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'LightSwitch'
+};
+</script>
+
+<style scoped lang="scss">
+.button {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(130deg, #646265, #101010);
+  box-shadow: -2px -2px 1px 3px #1b1b1b, 2px 2px 1px 2px #686868, -12px -12px 15px #605e61, 12px 12px 15px #1b1b1b;
+  border-radius: 50%;
+  transition: 0.2s ease;
+}
+
+.button-center {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(130deg, #646265, #101010);
+  box-shadow: 0px 0px 5px 5px #323232, 5px 4px 5px 1px #9b999c, -5px -5px 10px 5px #1b1b1b;
+  border: 3px solid #2d2d2d;
+  border-radius: 50%;
+  font-size: 29px;
+  color: #9b999c;
+  transition: 0.7s ease;
+}
+
+.button:active {
+  box-shadow: -0px -0px 1px 3px #1b1b1b, 0px 0px 1px 2px #686868, -3px -3px 15px #605e61, 3px 3px 15px #1b1b1b;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+input:active,
+input:focus {
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  outline-width: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+}
+
+input[type='checkbox']:checked ~ .button-center {
+  color: #add8e6;
+  box-shadow: 0px 0px 10px 2px #add8e6, 0px 0px 5px 5px #323232, 5px 4px 5px 1px #9b999c, -5px -5px 10px 5px #1b1b1b;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(120deg, #413f42, #2d2d2d);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
