@@ -38,13 +38,17 @@ const state = {
   }
 };
 
-const getters = {};
+const getters = {
+  count: state => Object.keys(state.items).length,
+  ideaArray: state => Object.values(state.items)
+};
 
 const actions = {};
 
 const mutations = {};
 
 export default {
+  namespaced: true,
   state,
   getters,
   actions,
